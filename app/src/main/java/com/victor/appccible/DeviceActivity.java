@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
 
+/**
+ * The type Device activity.
+ */
 public class DeviceActivity extends AppCompatActivity {
 
     @Override

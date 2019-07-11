@@ -25,17 +25,41 @@ import android.widget.TextView;
 
 import java.io.Serializable;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
 
+    /**
+     * The Bt manager.
+     */
     BluetoothManager btManager;
+    /**
+     * The Bt adapter.
+     */
     BluetoothAdapter btAdapter;
+    /**
+     * The Bt scanner.
+     */
     BluetoothLeScanner btScanner;
+    /**
+     * The Start scanning button.
+     */
     Button startScanningButton;
+    /**
+     * The Peripheral text view.
+     */
     TextView peripheralTextView;
     private final static int REQUEST_ENABLE_BT = 1;
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
+    /**
+     * The Scanning.
+     */
     boolean scanning = false;
+    /**
+     * The Dla.
+     */
     final DeviceListAdapter dla = new DeviceListAdapter(this);
 
     @Override
@@ -134,6 +158,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Start scanning.
+     */
     public void startScanning() {
         System.out.println("start scanning");
         peripheralTextView.setText("");
@@ -146,6 +173,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Stop scanning.
+     */
     public void stopScanning() {
         System.out.println("stopping scanning");
         peripheralTextView.append("Stopped Scanning");

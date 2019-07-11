@@ -14,16 +14,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * The type Device list adapter.
+ */
 public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.MyViewHolder> {
     private Context context;
     private ArrayList<BluetoothDevice> bdList = new ArrayList<BluetoothDevice>();
+
+    /**
+     * Instantiates a new Device list adapter.
+     *
+     * @param context the context
+     */
     public DeviceListAdapter(Context context) {
         this.context = context;
     }
 
 
-
-
+    /**
+     * Add bluetooth device.
+     *
+     * @param bd the bd
+     */
     public void addBluetoothDevice(BluetoothDevice bd){
         boolean exist = false;
         for(BluetoothDevice b : bdList){
@@ -55,6 +67,9 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.My
         return bdList.size();
     }
 
+    /**
+     * The type My view holder.
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView date;
@@ -94,6 +109,7 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.My
         /**
          * Display.
          *
+         * @param bDevice the b device
          */
         public void display(BluetoothDevice bDevice) {
             date.setText(bDevice.getName());
