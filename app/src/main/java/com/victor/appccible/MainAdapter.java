@@ -6,20 +6,25 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.clj.fastble.data.BleDevice;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> {
-    private String[] mDataset = new String[0];
+    //private String[] mDataset = new String[0];
 
     private Context context;
-
+    private List<BleDevice> bleD;
 
     /**
      * Instantiates a new Main activity recycler view adapter.
      *
      * @param context    the context
      */
-    public MainAdapter(Context context){
+    public MainAdapter(Context context, List<BleDevice> bleD){
         this.context = context;
-
+        this.bleD = bleD;
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -31,10 +36,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
-    public MainAdapter(String[] myDataset) {
-        mDataset = myDataset;
-    }
 
     // Create new views (invoked by the layout manager)
     @Override
@@ -53,13 +54,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.textView.setText(mDataset[position]);
+        holder.textView.setText((CharSequence) bleD.get(position));
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return bleD.size();
     }
 }
