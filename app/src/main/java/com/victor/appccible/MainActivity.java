@@ -23,6 +23,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         rv.addItemDecoration(mDividerItemDecoration);
         rv.setAdapter(new DeviceListAdapter(this));
+        rv.setItemViewCacheSize(0);
         peripheralTextView = (TextView) findViewById(R.id.PeripheralTextView);
         peripheralTextView.setMovementMethod(new ScrollingMovementMethod());
 
@@ -101,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
             dla.addBluetoothDevice(result.getDevice());
             dla.notifyDataSetChanged();
-
 
         }
     };

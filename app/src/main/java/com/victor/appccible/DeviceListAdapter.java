@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.MyViewHolder> {
@@ -19,6 +20,9 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.My
     public DeviceListAdapter(Context context) {
         this.context = context;
     }
+
+
+
 
     public void addBluetoothDevice(BluetoothDevice bd){
         boolean exist = false;
@@ -76,10 +80,13 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.My
                     //      .setMessage(currentPair.second)
                     //    .show();
                     //view.getContext().startActivity(new Intent(view.getContext(), DetailsTreatmentActivity.class));
-                  //  Intent intent;
-                    //intent = new Intent(context , DetailsTreatmentActivity.class);
-                    //intent.putExtra("TREATMENT_DETAILS", (Serializable) treatments.get(getAdapterPosition()));
-                    //context.startActivity(intent);
+                    BluetoothDevice bd = bdList.get(getAdapterPosition());
+
+                    bd.createBond();
+                    Intent intent;
+                    intent = new Intent(context , DeviceActivity.class);
+                    intent.putExtra("TREATMENT_DETAILS", bdList.get(getAdapterPosition()));
+                    context.startActivity(intent);
                 }
             });
         }
